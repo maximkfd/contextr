@@ -21,9 +21,9 @@ def cut_endings(words):
     result = []
     for term in words:
         if len(term) > 3:
-            if term[-1:] in 'йеуиюаояыв':
+            if term[-1:] in 'йеуиюаояыьв':
                 term = term[:-1]
-            if term[-1:] in 'йеуиюаояы':
+            if term[-1:] in 'йеуиюаояыь':
                 term = term[:-1]
         result.append(term)
     return result

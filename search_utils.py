@@ -2,6 +2,7 @@ import re
 
 MAX_SYMBOLS = 200
 terminator = '.;\n'
+letters = 'йцукенгшщзхъфывапролджэячсмитьбю'
 
 
 def find_first_pre(src, targets, position):

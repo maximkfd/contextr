@@ -1,6 +1,7 @@
 import re
 
 MAX_SYMBOLS = 200
+terminator = '.;\n'
 
 
 def find_first_pre(src, targets, position):

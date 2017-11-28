@@ -2,7 +2,6 @@ import re
 
 from search_utils import *
 
-terminator = '.;\n'
 
 with open('text.txt', 'r', encoding='utf8') as file:
     text = file.read()

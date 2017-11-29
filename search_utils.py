@@ -19,6 +19,7 @@ def find_first_pre(src, targets, position):
         if pos == -1:
             continue
         mini = min(pos, mini)
+
     return position - mini - offset
 
 

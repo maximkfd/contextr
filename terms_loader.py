@@ -17,6 +17,17 @@ def get_processed_relatives():
     return cut_endings(load_relatives())
 
 
+def load_conjunctions():
+    return load_words_from_file('conjunctions.txt')
+
+
+def get_processed_conjunctions():
+    conjunctions = []
+    for word in load_conjunctions():
+        conjunctions.append(word.lower())
+    return conjunctions
+
+
 def cut_endings(words):
     result = []
     for term in words:

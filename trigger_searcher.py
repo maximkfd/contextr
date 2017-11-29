@@ -3,6 +3,7 @@ import re
 from search_utils import *
 from terms_loader import *
 
+
 def get_triggers():
     terms = get_processed_terms()
     trigger_positions = []
@@ -15,7 +16,7 @@ def get_triggers():
             for i in iterable:
                 span_start = i.span()[0]
                 span_end = i.span()[1]
-                if text[span_start-1] != ' ':
+                if text[span_start - 1] != ' ':
                     continue
                 triggers.append(text[span_start:span_end])
                 start = find_first_pre(text, terminator, span_start)
@@ -31,4 +32,5 @@ def print_triggres_with_context():
         print(text[context[0]:context[1]], "   |   ", triggers[i])
         print('--------------------')
 
-# print_triggres_with_context()
+
+print_triggres_with_context()

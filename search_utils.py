@@ -1,4 +1,6 @@
 import re
+from terms_loader import *
+from settings import *
 
 MAX_SYMBOLS = 200
 terminator = '.;\n'  # добавить союзы
@@ -19,8 +21,17 @@ def find_first_pre(src, targets, position):
         if pos == -1:
             continue
         mini = min(pos, mini)
+    result_candidate = position - mini - offset
+    max_conj_position = 0
+    if USE_CONJUNCTIONS:
+        left_context = str(src[result_candidate:position])
+        for conj in get_processed_conjunctions():
+            regex = '((?![а-яА-Я]).)' + conj + '((?![а-яА-Я]).)'
+            pos = left_context.rfind(regex)
+            if pos is not None:
+                max_conj_position = max(max_conj_position, pos)
 
-    return position - mini - offset
+    return result_candidate + max_conj_position
 
 
 def find_first_after(src, targets, position):
@@ -36,7 +47,18 @@ def find_first_after(src, targets, position):
         if pos == -1:
             continue
         mini = min(pos, mini)
-    return position + mini + offset
+    result_candidate = position + mini + offset
+    min_conj_position = 0
+    if USE_CONJUNCTIONS:
+        right_context = str(src[position:result_candidate])
+        for conj in get_processed_conjunctions():
+            regex = '((?![а-яА-Я]).)' + conj + '((?![а-яА-Я]).)'
+            pattern = re.compile(regex)
+            pos = pattern.search(right_context)
+            if pos is not None:
+                min_conj_position = min(min_conj_position, pos)
+
+    return result_candidate
 
 
 def is_year(s):

@@ -28,6 +28,14 @@ def get_processed_conjunctions():
     return conjunctions
 
 
+def load_negations():
+    return load_words_from_file('negations.txt')
+
+
+def get_processed_negations():
+    return load_negations()
+
+
 def cut_endings(words):
     result = []
     for term in words:

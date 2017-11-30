@@ -9,7 +9,7 @@ def get_triggers():
     trigger_positions = []
     triggers = []
     with open('text.txt', 'r', encoding="utf-8") as f:
-        text = f.read()
+        text = f.read().lower()
         for term in terms:
             word_reg = re.compile(term)
             iterable = word_reg.finditer(text)
@@ -33,4 +33,4 @@ def print_triggres_with_context():
         print('--------------------')
 
 
-print_triggres_with_context()
+# print_triggres_with_context()

@@ -36,6 +36,14 @@ def get_processed_negations():
     return load_negations()
 
 
+def load_probs():
+    return load_words_from_file("probs.dictionary")
+
+
+def get_processed_probs():
+    return load_probs()
+
+
 def cut_endings(words):
     result = []
     for term in words:

@@ -25,10 +25,10 @@ def get_triggers():
     return text, trigger_positions, triggers
 
 
-def print_triggres_with_context():
-    text, trigger_positions, triggers = get_triggers()
-    for i in range(len(trigger_positions)):
-        context = trigger_positions[i]
+def print_triggers_with_context():
+    text, context_borders, triggers = get_triggers()
+    for i in range(len(context_borders)):
+        context = context_borders[i]
         print(text[context[0]:context[1]], "   |   ", triggers[i])
         print('--------------------')
 

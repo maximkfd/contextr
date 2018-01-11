@@ -3,7 +3,7 @@ from terms_loader import *
 from settings import *
 
 MAX_SYMBOLS = 200
-terminator = '.;\n'  # добавить союзы
+terminator = '.;\n'
 letters = 'йцукенгшщзхъфывапролджэячсмитьбю'
 
 

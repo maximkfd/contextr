@@ -32,24 +32,24 @@ def get_negations(text, trigger_contexts):
     return result
 
 
-text, trigger_positions, triggers = get_triggers()
-negs = get_negations(text, trigger_positions)
-rels = get_relativities(text, trigger_positions)
-times = get_times(text, trigger_positions)
-
-nprel = np.array(rels)
-npborder = np.array(trigger_positions)
-nptriggers = np.array(triggers)
-npnegs = np.array(negs)
-nppositions = np.array([])
-for i in trigger_positions:
-    nppositions = np.append(nppositions, i[0])
-indicies = nppositions.argsort()
-nprel = nprel[indicies]
-npborder = npborder[indicies]
-nptriggers = nptriggers[indicies]
-npnegs = npnegs[indicies]
-for i in range(len(negs)):
-    print(text[trigger_positions[i][0]:trigger_positions[i][1]], triggers[i], negs[i], rels[i], times[i], sep="=")
-    # print(text[npborder[i][0]:npborder[i][1]], nptriggers[i], npnegs[i], nprel[i], sep="=")
-    # print("-----------------------------------------------------------------------")
+# text, trigger_positions, triggers = get_triggers()
+# negs = get_negations(text, trigger_positions)
+# rels = get_relativities(text, trigger_positions)
+# times = get_times(text, trigger_positions)
+#
+# nprel = np.array(rels)
+# npborder = np.array(trigger_positions)
+# nptriggers = np.array(triggers)
+# npnegs = np.array(negs)
+# nppositions = np.array([])
+# for i in trigger_positions:
+#     nppositions = np.append(nppositions, i[0])
+# indicies = nppositions.argsort()
+# nprel = nprel[indicies]
+# npborder = npborder[indicies]
+# nptriggers = nptriggers[indicies]
+# npnegs = npnegs[indicies]
+# for i in range(len(negs)):
+#     print(text[trigger_positions[i][0]:trigger_positions[i][1]], triggers[i], negs[i], rels[i], times[i], sep="=")
+#     # print(text[npborder[i][0]:npborder[i][1]], nptriggers[i], npnegs[i], nprel[i], sep="=")
+#     # print("-----------------------------------------------------------------------")

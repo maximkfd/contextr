@@ -9,12 +9,12 @@ def get_relativities(text, context_borders):
     relative_words = get_processed_relatives()
     for i in context_borders:
         context = str(text[i[0]:i[1]])
-        current_result = False
+        current_result = True
         for word in relative_words:
             position = context.find(word)
             if position != -1:
                 if (position == 0) or not context[position-1] in letters:
-                    current_result = True
+                    current_result = False
                     break
         result.append(current_result)
     return result

@@ -44,6 +44,10 @@ def get_processed_probs():
     return load_probs()
 
 
+def get_processed_times():
+    return load_words_from_file("time.dictionary")
+
+
 def cut_endings(words):
     result = []
     for term in words:
@@ -61,6 +65,6 @@ def load_words_from_file(file_name):
     with open(file_name, 'r', encoding='utf8') as file:
         line = file.readline()
         while line != '':
-            terms.append(line[:-1])
+            terms.append(line[:-1] if line[-1] == '\n' else line)
             line = file.readline()
     return terms

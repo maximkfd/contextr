@@ -5,9 +5,11 @@ from settings import *
 MAX_SYMBOLS = 200
 terminator = '.;\n'
 letters = 'йцукенгшщзхъфывапролджэячсмитьбю'
+conjunctions = get_processed_conjunctions()
 
 
 def find_first_pre(src, targets, position):
+    global conjunctions
     src = src[position - MAX_SYMBOLS:position]
     src = src[::-1]
     date_pattern = re.compile("\\.(.|..)\\.")
@@ -25,7 +27,7 @@ def find_first_pre(src, targets, position):
     max_conj_position = 0
     if USE_CONJUNCTIONS:
         left_context = str(src[result_candidate:position])
-        for conj in get_processed_conjunctions():
+        for conj in conjunctions:
             regex = '((?![а-яА-Я]).)' + conj + '((?![а-яА-Я]).)'
             pos = left_context.rfind(regex)
             if pos is not None:
@@ -35,6 +37,7 @@ def find_first_pre(src, targets, position):
 
 
 def find_first_after(src, targets, position):
+    global conjunctions
     src = src[position:position + MAX_SYMBOLS]
     pattern = re.compile("^(.){1,2}\\.")
     offset = 0
@@ -51,7 +54,7 @@ def find_first_after(src, targets, position):
     min_conj_position = 0
     if USE_CONJUNCTIONS:
         right_context = str(src[position:result_candidate])
-        for conj in get_processed_conjunctions():
+        for conj in conjunctions:
             regex = '((?![а-яА-Я]).)' + conj + '((?![а-яА-Я]).)'
             pattern = re.compile(regex)
             pos = pattern.search(right_context)

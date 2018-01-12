@@ -24,5 +24,5 @@ text, context_borders, triggers = get_triggers()
 rels = get_relativities(text, context_borders)
 for i in range(len(rels)):
     context = context_borders[i]
-    print(text[context[0]:context[1]], "   |   ", triggers[i], "   ", rels[i])
-    print('--------------------')
+    print(text[context[0]:context[1]], triggers[i], rels[i], sep="=")
+    # print('--------------------')

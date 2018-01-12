@@ -37,7 +37,7 @@ def get_processed_negations():
 
 
 def load_probs():
-    return load_words_from_file("probs.dictionary")
+    return load_words_from_file("neutral.dictionary")
 
 
 def get_processed_probs():
